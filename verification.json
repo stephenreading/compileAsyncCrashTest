@@ -1,0 +1,98 @@
+{
+  "verifiedAt": "2026-11-02T20:12:10.906Z",
+  "browser": "154.0.8037.57",
+  "platform": "linux",
+  "node": "v24.19.0",
+  "args": [
+    "--enable-unsafe-webgpu",
+    "--use-angle=swiftshader",
+    "--enable-features=Vulkan",
+    "--disable-vulkan-surface"
+  ],
+  "runsPerCase": 10,
+  "versions": [
+    {
+      "revision": "186",
+      "cases": {
+        "minimal": {
+          "matchedRuns": 10,
+          "example": {
+            "revision": "186",
+            "backend": "WebGPU",
+            "fulfilled": 2,
+            "rejected": []
+          }
+        },
+        "warmedMeshes": {
+          "matchedRuns": 10,
+          "example": {
+            "revision": "186",
+            "backend": "WebGPU",
+            "fulfilled": 2,
+            "rejected": []
+          }
+        },
+        "sequential": {
+          "matchedRuns": 10,
+          "example": {
+            "revision": "186",
+            "backend": "WebGPU",
+            "fulfilled": 2,
+            "rejected": []
+          }
+        }
+      }
+    },
+    {
+      "revision": "187",
+      "cases": {
+        "minimal": {
+          "matchedRuns": 10,
+          "example": {
+            "revision": "187",
+            "backend": "WebGPU",
+            "fulfilled": 1,
+            "rejected": [
+              {
+                "name": "TypeError",
+                "message": "Cannot destructure property 'useFrameBufferTarget' of 'this._precompilationState' as it is null.",
+                "stack": "TypeError: Cannot destructure property 'useFrameBufferTarget' of 'this._precompilationState' as it is null.\n    at WebGPURenderer._finishPreCompile (http://127.0.0.1:33505/r187/node_modules/three/build/three.webgpu.js:23566:11)\n    at WebGPURenderer.compileAsync (http://127.0.0.1:33505/r187/node_modules/three/build/three.webgpu.js:23493:9)\n    at async Promise.allSettled (index 1)\n    at async http://127.0.0.1:33505/r187/:23:17"
+              }
+            ]
+          }
+        },
+        "warmedMeshes": {
+          "matchedRuns": 10,
+          "example": {
+            "revision": "187",
+            "backend": "WebGPU",
+            "fulfilled": 1,
+            "rejected": [
+              {
+                "name": "TypeError",
+                "message": "Cannot destructure property 'useFrameBufferTarget' of 'this._precompilationState' as it is null.",
+                "stack": "TypeError: Cannot destructure property 'useFrameBufferTarget' of 'this._precompilationState' as it is null.\n    at WebGPURenderer._finishPreCompile (http://127.0.0.1:33505/r187/node_modules/three/build/three.webgpu.js:23566:11)\n    at WebGPURenderer.compileAsync (http://127.0.0.1:33505/r187/node_modules/three/build/three.webgpu.js:23493:9)\n    at async Promise.allSettled (index 1)\n    at async eval (eval at evaluate (:311:30), <anonymous>:14:27)\n    at async <anonymous>:337:30"
+              }
+            ]
+          }
+        },
+        "sequential": {
+          "matchedRuns": 10,
+          "example": {
+            "revision": "187",
+            "backend": "WebGPU",
+            "fulfilled": 2,
+            "rejected": []
+          }
+        }
+      }
+    }
+  ],
+  "adapter": {
+    "vendor": "google",
+    "architecture": "swiftshader",
+    "device": "",
+    "description": "",
+    "isFallbackAdapter": true
+  }
+}

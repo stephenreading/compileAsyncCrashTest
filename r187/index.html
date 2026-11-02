@@ -1,0 +1,39 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Concurrent compileAsync repro</title>
+<script type="importmap">
+{
+  "imports": {
+    "three/webgpu": "./node_modules/three/build/three.webgpu.js"
+  }
+}
+</script>
+<pre id="output">Running…</pre>
+<script type="module">
+import { WebGPURenderer, Scene, PerspectiveCamera, Mesh, BoxGeometry, MeshBasicNodeMaterial, REVISION } from 'three/webgpu';
+
+const renderer = new WebGPURenderer();
+await renderer.init();
+const scene = new Scene();
+const camera = new PerspectiveCamera();
+scene.add(new Mesh(new BoxGeometry(), new MeshBasicNodeMaterial()));
+
+await renderer.compileAsync(scene, camera); // Warm the caches for reliable interleaving.
+// Start both calls before awaiting either of them.
+const results = await Promise.allSettled(
+  [renderer.compileAsync(scene, camera), renderer.compileAsync(scene, camera)]
+);
+const result = {
+  revision: REVISION,
+  backend: renderer.backend.isWebGPUBackend ? 'WebGPU' : 'WebGL fallback',
+  fulfilled: results.filter(r => r.status === 'fulfilled').length,
+  rejected: results.filter(r => r.status === 'rejected').map(r => ({
+    name: r.reason.name,
+    message: r.reason.message,
+    stack: r.reason.stack
+  }))
+};
+document.querySelector('#output').textContent = JSON.stringify(result, null, 2);
+console.log(result);
+window.reproResult = result;
+</script>
