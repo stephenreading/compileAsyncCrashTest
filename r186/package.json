@@ -1,0 +1,7 @@
+{
+  "name": "compile-async-r186",
+  "private": true,
+  "dependencies": {
+    "three": "0.186.0"
+  }
+}
